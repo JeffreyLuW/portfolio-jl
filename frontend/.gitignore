@@ -2,7 +2,9 @@
 node_modules
 /dist
 
-
+#pictures
+*.jpg
+*.png
 # local env files
 .env.local
 .env.*.local

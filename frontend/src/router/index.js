@@ -1,40 +1,31 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Home from '../views/Home.vue';
-import About from '../views/About.vue';
-import Projects from '../views/Projects.vue';
-import Resume from '../views/Resume.vue';
-import Contact from '../views/Contact.vue';
+import Home from '../App.vue';
 
 const routes = [
   {
-    path: '/',
-    redirect: '/home'
-  },
-  {
-    path: '/home',
+    path: '/:anchor?',
+    name: 'Home',
     component: Home
-  },
-  {
-    path: '/about',
-    component: About
-  },
-  {
-    path: '/projects',
-    component: Projects
-  },
-  {
-    path: '/resume',
-    component: Resume
-  },
-  {
-    path: '/contact',
-    component: Contact
   }
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
+  history: createWebHistory(process.env.BASE_URL),
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    // Check if the route has a hash (which would be an anchor link)
+    if (to.hash) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve({ el: to.hash, behavior: 'smooth' });
+        }, 500); // delay to account for Vue's rendering time
+      });
+    } else if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { top: 0 };
+    }
+  }
 });
 
 export default router;

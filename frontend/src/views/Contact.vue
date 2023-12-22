@@ -1,47 +1,60 @@
 <template>
-    <div class="contact">
-      <h1>Contact Me</h1>
-      <form @submit.prevent="submitForm">
-        <input type="text" placeholder="Your Name" v-model="name" />
-        <input type="email" placeholder="Your Email" v-model="email" />
-        <textarea placeholder="Your Message" v-model="message"></textarea>
-        <button type="submit">Send</button>
-      </form>
+    <div class="contact-container">
+      <div class="contact-card" @click="navigateTo('https://github.com/yourusername')">
+        <img src="@/assets/github-icon.png" alt="GitHub" class="icon">
+        <p>GitHub</p>
+      </div>
+  
+      <div class="contact-card" @click="navigateTo('https://linkedin.com/in/yourusername')">
+        <img src="@/assets/linkedin-icon.png" alt="LinkedIn" class="icon">
+        <p>LinkedIn</p>
+      </div>
+  
+      <div class="contact-card" @click="navigateTo('mailto:your.email@example.com')">
+        <img src="@/assets/email-icon.png" alt="Email" class="icon">
+        <p>Email</p>
+      </div>
     </div>
   </template>
   
   <script>
   export default {
     name: 'Contact-page',
-    data() {
-      return {
-        name: '',
-        email: '',
-        message: ''
-      };
-    },
     methods: {
-      submitForm() {
-        // Handle form submission
-        alert(`Message from ${this.name}`);
+      navigateTo(url) {
+        window.open(url, '_blank');
       }
     }
   };
   </script>
   
   <style scoped>
-  .contact {
+  .contact-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     padding: 20px;
   }
-  .contact form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: auto;
+  
+  .contact-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
   }
-  .contact form input,
-  .contact form textarea {
+  
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .icon {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
     margin-bottom: 10px;
   }
   </style>
+  
   
