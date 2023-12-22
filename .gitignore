@@ -1,0 +1,18 @@
+# If a rule is already specified in a subdirectory’s .gitignore, there's no need to repeat it in the root .gitignore
+# The root .gitignore should only include more general rules that are not covered in these specific .gitignore files
+# General system files
+.DS_Store
+Thumbs.db
+# General IDE and editor files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# Log files
+*.log
