@@ -1,6 +1,5 @@
 <template>
   <div class="projects-section">
-    <h2>My Projects</h2>
     <div class="projects-grid">
       <ProjectCard
         v-for="project in projects"

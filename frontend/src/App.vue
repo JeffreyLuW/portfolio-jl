@@ -2,20 +2,18 @@
   <div>
     <the-header></the-header>
     <section id="home">
-      <h1>Home Section</h1>
       <home-section></home-section>
       <!-- Content -->
     </section>
 
     <section id="about">
-      <h1>About Section</h1>
       <about-section></about-section>
       <!-- Content -->
     </section>
 
     <section id="projects">
-      <h1>Projects Section</h1>
-    <project-section></project-section>
+      <h1>My Projects</h1>
+      <project-section></project-section>
       <!-- Content -->
     </section>
 
@@ -29,7 +27,6 @@
 </template>
 <script>
 import ProjectSection from "./views/Projects.vue";
-// import ResumeSection from "./views/Resume.vue";
 import ContactSection from "./views/Contact.vue";
 import AboutSection from "./views/About.vue";
 import HomeSection from "./views/Home.vue";
@@ -42,26 +39,26 @@ export default {
     AboutSection,
     HomeSection,
     TheHeader,
-    TheFooter
+    TheFooter,
   },
   watch: {
-    '$route'(to) {
+    $route(to) {
       this.scrollToSection(to.hash);
-    }
+    },
   },
   methods: {
     scrollToSection(hash) {
       if (hash) {
         let element = document.getElementById(hash.slice(1));
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ behavior: "smooth" });
         }
       }
-    }
+    },
   },
   mounted() {
     this.scrollToSection(this.$route.hash);
-  }
+  },
 };
 </script>
 
@@ -83,6 +80,10 @@ nav a:hover {
   color: #ddd;
 }
 
+/* override padding for home section */
+#home {
+  padding: 0;
+}
 section {
   padding: 100px 0;
   text-align: center;
@@ -93,7 +94,8 @@ section {
   background-color: #f8f8f8;
 }
 
-#about, #contact {
+#about,
+#contact {
   background-color: #f0f0f0;
 }
 
