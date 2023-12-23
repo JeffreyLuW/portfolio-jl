@@ -1,60 +1,89 @@
 <template>
-    <div class="contact-container">
-      <div class="contact-card" @click="navigateTo('https://github.com/yourusername')">
-        <img src="@/assets/github-icon.png" alt="GitHub" class="icon">
-        <p>GitHub</p>
+  <div class="contact-section">
+    <div class="contact-cards">
+      <!-- Email Card -->
+      <div class="card" @click="openLink('mailto:your.email@example.com')">
+        <!-- <img src="@/assets/email-icon.svg" alt="Email" class="icon" /> -->
+        <img src="https://via.placeholder.com/50" alt="Placeholder" class="icon" />
+        <h3>Email</h3>
+        <p>Let's get in touch.</p>
       </div>
-  
-      <div class="contact-card" @click="navigateTo('https://linkedin.com/in/yourusername')">
-        <img src="@/assets/linkedin-icon.png" alt="LinkedIn" class="icon">
-        <p>LinkedIn</p>
+
+      <!-- LinkedIn Card -->
+      <div class="card" @click="openLink('https://www.linkedin.com/in/yourusername/')">
+        <!-- <img src="@/assets/linkedin-icon.svg" alt="LinkedIn" class="icon" /> -->
+        <img src="https://via.placeholder.com/50" alt="Placeholder" class="icon" />
+        <h3>LinkedIn</h3>
+        <p>Let's connect.</p>
       </div>
-  
-      <div class="contact-card" @click="navigateTo('mailto:your.email@example.com')">
-        <img src="@/assets/email-icon.png" alt="Email" class="icon">
-        <p>Email</p>
+
+      <!-- GitHub Card -->
+      <div class="card" @click="openLink('https://github.com/JeffreyLuW')">
+        <!-- <img src="@/assets/github-icon.svg" alt="GitHub" class="icon" /> -->
+        <img src="https://via.placeholder.com/50" alt="Placeholder" class="icon" />
+        <h3>GitHub</h3>
+        <p>Check out my repos.</p>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'Contact-page',
-    methods: {
-      navigateTo(url) {
-        window.open(url, '_blank');
-      }
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Contact-page',
+  methods: {
+    openLink(url) {
+      window.open(url, '_blank');
     }
-  };
-  </script>
-  
-  <style scoped>
-  .contact-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
   }
-  
-  .contact-card {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+};
+</script>
+
+<style scoped>
+.contact-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.contact-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.card {
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  padding: 2rem;
+  width: 300px; /* adjust the width as needed */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.icon {
+  width: 50px; /* adjust the size as needed */
+  margin-bottom: 1rem;
+}
+
+h3 {
+  margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+  .contact-cards {
+    flex-direction: column;
+    gap: 1rem;
   }
-  
-  .contact-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .icon {
-    width: 50px; /* Adjust size as needed */
-    height: 50px;
-    margin-bottom: 10px;
-  }
-  </style>
+}
+</style>
+
   
   
