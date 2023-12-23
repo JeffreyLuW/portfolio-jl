@@ -1,107 +1,79 @@
 <template>
-  <div class="projects-container">
-    <div class="project" v-for="project in projects" :key="project.id">
-      <img :src="project.image" :alt="project.title" class="project-image" />
-      <div class="project-info">
-        <h3>{{ project.title }}</h3>
-        <p>{{ project.description }}</p>
-        <div class="project-buttons">
-          <a :href="project.liveDemoUrl" target="_blank" class="button"
-            >Live Demo</a
-          >
-          <a :href="project.sourceCodeUrl" target="_blank" class="button"
-            >Source Code</a
-          >
-        </div>
-      </div>
+  <div class="projects-section">
+    <h2>My Projects</h2>
+    <div class="projects-grid">
+      <ProjectCard
+        v-for="project in projects"
+        :key="project.id"
+        :project="project"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import ProjectCard from '../components/ui/ProjectCard.vue'
+
 export default {
-  name: "Projects-page",
-  data() {
-    return {
-      projects: [
-        {
-          id: 1,
-          title: "Project 1",
-          description: "Description for Project 1.hhhhhhhhhhhhhh",
-          image: "path/to/image1.jpg", // Replace with actual image paths
-          liveDemoUrl: "https://live-demo1.com",
-          sourceCodeUrl: "https://source-code1.com",
-        },
-        {
-          id: 2,
-          title: "Project 2",
-          description: "Description for Project 2.",
-          image: "path/to/image2.jpg",
-          liveDemoUrl: "https://live-demo2.com",
-          sourceCodeUrl: "https://source-code2.com",
-        },
-        // ... more projects
-      ],
-    };
+  name: 'ProjectsSection',
+  components: {
+    ProjectCard
   },
+  data() {
+  return {
+    projects: [
+      {
+        id: 1,
+        title: 'ConnectME',
+        description: 'A social media platform to connect with people around the globe.',
+        technologies: ['React', 'Node.js', 'MongoDB', 'Express'],
+        // image: '@/assets/project-connectme.jpg', // Replace with the path to your project image
+        demoLink: 'https://connectme.example.com', // Replace with the link to your live demo
+        codeLink: 'https://github.com/yourusername/connectme' // Replace with the link to your source code
+      },
+      {
+        id: 2,
+        title: 'BookMe',
+        description: 'A scheduling app for service-based businesses like salons and barbershops.',
+        technologies: ['Vue.js', 'Firebase', 'Vuetify'],
+        image: '@/assets/project-bookme.jpg', // Replace with the path to your project image
+        demoLink: 'https://bookme.example.com', // Replace with the link to your live demo
+        codeLink: 'https://github.com/yourusername/bookme' // Replace with the link to your source code
+      },
+      {
+        id: 3,
+        title: 'ProPet',
+        description: 'An e-commerce platform for pet lovers to buy pet supplies and accessories.',
+        technologies: ['Angular', 'TypeScript', 'Stripe API'],
+        image: '@/assets/project-propet.jpg', // Replace with the path to your project image
+        demoLink: 'https://propet.example.com', // Replace with the link to your live demo
+        codeLink: 'https://github.com/yourusername/propet' // Replace with the link to your source code
+      }
+      // Add more projects as needed
+    ]
+  };
+}
+
 };
 </script>
 
 <style scoped>
-.projects-container {
+.projects-section {
+  padding: 40px;
+}
+
+.projects-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
+  gap: 20px; /* Space between cards */
 }
 
-.project {
-  flex-basis: calc(33% - 20px); /* Adjust the spacing as per requirement */
-  margin: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
-  overflow: hidden;
-  background: #fff;
-}
-
-.project-image {
-  width: 100%;
-  height: 200px; /* Fixed height or use object-fit for better control */
-  object-fit: cover;
-}
-
-.project-info {
-  padding: 15px;
-}
-
-.project-buttons {
-  margin-top: 10px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.button {
-  padding: 10px 15px;
-  text-align: center;
-  background-color: #007bff;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.button:hover {
-  background-color: #0056b3;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
-  .project {
-    flex-basis: calc(50% - 20px); /* 2 projects per row on medium screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .project {
-    flex-basis: 100%; /* 1 project per row on small screens */
+  .projects-grid {
+    flex-direction: column;
+    align-items: center;
   }
 }
 </style>
+
